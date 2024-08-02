@@ -4,6 +4,7 @@
 
 <p align="center">
   <img src="assets/icons/datapadicon_256.png" alt="The Datapad"/>
+  <img src="assets/icons/datapad-alt_256.png" alt="The Datapad alternative"/>
 </p>
 
 Store your thoughts and plans within this portable device.
