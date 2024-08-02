@@ -6,7 +6,7 @@
     "dependencies": [
         "base >= 1.1.0"
     ],
-    "description": "Addds an datapad to write down your data.",
+    "description": "A datapad item to share thoughts and ideas with your factory wokers!",
     "factorio_version": "1.1",
     "package": {
         "ignore": ["**"],
