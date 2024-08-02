@@ -1,0 +1,19 @@
+{
+    "name": "datapad",
+    "version": "1.0.0",
+    "title": "DataPad",
+    "author": "xXCleanXx",
+    "dependencies": [
+        "base >= 1.1.0"
+    ],
+    "description": "Addds an datapad to write down your data.",
+    "factorio_version": "1.1",
+    "package": {
+        "ignore": ["**"],
+        "extra": [
+            {
+                "root": ".build"
+            }
+        ]
+    }
+}
