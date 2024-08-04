@@ -3,8 +3,12 @@
 ---
 
 <p align="center">
-  <img src="assets/icons/datapadicon_256.png" alt="The Datapad"/>
-  <img src="assets/icons/datapad-alt_256.png" alt="The Datapad alternative"/>
+  <img src="assets/icons/datapad-animation.gif" style="width:96px" alt="The Datapad"/>
+  <p align="center">
+    <img src="assets/icons/datapadicon_empty_256.png" alt="An empty Datapad"/>
+    <img src="assets/icons/datapadicon_256.png" alt="Datapad with data"/>
+    <img src="assets/icons/datapad-alt_256.png" alt="Datapad alternative"/>
+    </p>
 </p>
 
 Store your thoughts and plans within this portable device.

@@ -1,3 +1,5 @@
+---@param player LuaPlayer
+---@return LuaGuiElement?
 function DataPad.create(player)
     local root = player.gui.screen.add{
         type = 'frame',

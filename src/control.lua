@@ -1,1 +1,1 @@
-require('scripts.main')
+Datapadreaderr = require("scripts/datapadreader/main")

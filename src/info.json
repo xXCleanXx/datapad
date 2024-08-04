@@ -2,11 +2,11 @@
     "name": "datapad",
     "version": "1.0.0",
     "title": "DataPad",
-    "author": "xXCleanXx",
+    "author": "SpReeD, xXCleanXx",
     "dependencies": [
         "base >= 1.1.0"
     ],
-    "description": "A datapad item to share thoughts and ideas with your factory wokers!",
+    "description": "A datapad item to share thoughts and ideas with your factory workers!",
     "factorio_version": "1.1",
     "package": {
         "ignore": ["**"],
