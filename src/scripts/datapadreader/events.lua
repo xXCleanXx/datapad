@@ -1,92 +1,44 @@
+require("eventhandler")
+require("datapaddata")
+
 ---Handles gui clicks
 ---@param event EventData.on_gui_click
 function Datapadreader.on_gui_click(event)
     local tags = event.element.tags
     local action = tags.action
     local player = game.get_player(event.player_index) --[[@as LuaPlayer]]
-    
-    if action == "write-button" then
-        local spriteButton = player.gui.screen[DataPad.name_gui_root]["panel"]["datapad-ui-sprite-button"] --[[@as LuaGuiElement]]
-        if spriteButton.sprite == nil or spriteButton.sprite == {} then
-            return
-        end
-        spriteButton.sprite = "datapad-icon"
-        local txtBox = player.gui.screen[DataPad.name_gui_root]["panel"]["datapad-ui-textbox"] --[[@as LuaGuiElement]]
-        global.datapad_data = {content=txtBox.text}
+
+    if action == {} or action == nil or player == nil then
         return
     end
-    
-    if action == DataPad.ui_sprite_button then
-        local spriteButton = event.element --[[@as LuaGuiElement]]
-        local txtBox = player.gui.screen[DataPad.name_gui_root]["panel"]["datapad-ui-textbox"] --[[@as LuaGuiElement]]
 
-        if player.cursor_stack.valid_for_read and player.cursor_stack.name == "datapad-off" and (spriteButton.sprite == nil or spriteButton.sprite == "") then
-            spriteButton.sprite = "datapad-icon-off"
+    if action == Datapadreader.ui_action_close_button then
+        Datapadreader.GuiClose(player)
+    end
 
-            txtBox.text = "Empty datapad"
+    if action == Datapadreader.ui_action_write_button then
+        Datapadreader.OnWriteButtonClick(player)
+        return
+    end
 
-            player.cursor_stack.clear()
-            return
-        end
-
-        if player.cursor_stack.valid_for_read and player.cursor_stack.name == "datapad" and (spriteButton.sprite == nil or spriteButton.sprite == "") then
-            spriteButton.sprite = "datapad-icon"
-
-            if next(player.cursor_stack.tags) == nil then
-                txtBox.text = "Empty datapad"
-            else
-                txtBox.text = player.cursor_stack.tags.content --[[@as string]]
-                global.datapad_data = {content=player.cursor_stack.tags.content}
-            end
-
-            player.cursor_stack.clear()
-
-            return
-        end
-
-        if not player.cursor_stack.valid_for_read and spriteButton.sprite == "datapad-icon-off" then
-            spriteButton.sprite = nil
-            local dpad = {name="datapad-off", count=1}
-            player.cursor_stack.set_stack(dpad)
-            txtBox.text = ""
-            return
-        end
-        
-        if not player.cursor_stack.valid_for_read and spriteButton.sprite == "datapad-icon" then
-            spriteButton.sprite = nil
-            local dpad = {name="datapad", count=1}
-
-            if global.datapad_data.content ~= nil and global.datapad_data.content ~= {} then
-                --dpad.tags = {content=global.datapad_data.content}
-                player.cursor_stack.set_stack(dpad)
-                player.cursor_stack.tags = {content=global.datapad_data.content}
-                player.cursor_stack.custom_description = global.datapad_data.content
-                global.datapad_data.content = nil
-            else
-                player.cursor_stack.set_stack(dpad)
-            end
-
-            txtBox.text = ""
-            return
-        end
+    if action == Datapadreader.ui_sprite_button then
+        Datapadreader.OnSpriteButtonClick(player)
     end
 end
 script.on_event(defines.events.on_gui_click, Datapadreader.on_gui_click)
 
--- Function to handle cursor stack changes
+--Function to handle cursor stack changes
 ---@param event EventData.on_player_cursor_stack_changed
 function Datapadreader.on_cursor_stack_changed(event)
     local player = game.get_player(event.player_index) --[[@as LuaPlayer]]
-    Datapadreader.GuiToggle(player)
+    Datapadreader.OnPlayerCursorStackChanged(player)
 end
 script.on_event(defines.events.on_player_cursor_stack_changed, Datapadreader.on_cursor_stack_changed)
 
 -- ---@param event EventData.on_gui_text_changed
 -- function DataPad.on_gui_text_changed(event)
 --     if event.element.name == DataPad.name_textfield then
-        
 --     elseif event.element.name == DataPad.name_text_box then
-
 --     end
 -- end
 -- script.on_event(defines.events.on_gui_text_changed, DataPad.on_gui_text_changed)
@@ -104,15 +56,19 @@ script.on_event(Datapadreader.keyboard_shortcut, Datapadreader.on_keyboard_short
 
 ---@param player LuaPlayer
 ---@return DatapadData
-function Datapadreader.GetGlobalDatapadData(player)
+function Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)
     local player_index = player.index
+
+    if global.datapad_data == nil then
+        global.datapad_data = DatapadData
+    end
     global.datapad_data[player_index] = global.datapad_data[player_index] or {}
     return global.datapad_data[player_index]
 end
 
 ---Initializes DataPad
 function Datapadreader.on_init()
-    global.datapad_data = {}
+    global.datapad_data = DatapadData
 end
 script.on_init(Datapadreader.on_init)
 

@@ -1,23 +1,36 @@
 require("constants")
-require("events")
 require("ui")
+require("events")
+
+---Returns the Datapad HUD for a given player, if it is open.
+---@param player LuaPlayer
+---@return LuaGuiElement
+function Datapadreader.GetWindow(player)
+    return player.gui.screen[Datapadreader.ui_root] --[[@as LuaGuiElement]]
+end
+
+---@param player LuaPlayer
+function Datapadreader.GuiOpen(player)
+    if Datapadreader.GetWindow(player) then return end
+    Datapadreader.RenderGui(player)
+end
 
 ---Closes the Datapad HUD of the given player.
 ---@param player LuaPlayer Player
 function Datapadreader.GuiClose(player)
-    local gui = Datapadreader.GetGui(player)
-  
+    local dpadData = Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)
+    local gui = Datapadreader.GetWindow(player)
+
     if gui then
-      --local playerdata = get_make_playerdata(player)
-      --playerdata.lifesupport_hud_location = gui.location
-      gui.destroy()
+        dpadData.Location = Datapadreader.GetWindow(player).location
+        gui.destroy()
     end
 end
 
 ---Opens or closes the GUI.
 ---@param player LuaPlayer
 function Datapadreader.GuiToggle(player)
-    if Datapadreader.GetGui(player) then
+    if Datapadreader.GetWindow(player) then
         Datapadreader.GuiClose(player)
     else
         Datapadreader.GuiOpen(player)
