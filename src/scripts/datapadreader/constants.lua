@@ -9,10 +9,15 @@ Datapadreader = {
     ui_rightflow = "datapadreader-ui-right-flow",
     ui_buttonflow = "datapadreader-ui-button-flow",
     ui_root_panel = "datapadreader-ui-panel",
-    ui_text_box = "datapadreader-ui-textbox",
-    ui_sprite_button = "datapadreader-ui-sprite-button",
+    ui_slot = "datapadreader-ui-sprite-button",
     ui_write_button = "datapadreader-ui-write-button",
     ui_clear_button = "datapadreader-ui-clear-button",
+    ui_content_root = "datapadreader-ui-content-root",
+    ui_content_root_flow = "datapadreader-ui-content-root-flow",
+    ui_content_root_flow_name_flow = "datapadreader-ui-content-root-flow-name-flow",
+    ui_content_root_flow_name_flow_txt = "datapadreader-ui-content-root-flow-name-flow-txt",
+    ui_content_root_flow_content_flow = "datapadreader-ui-content-root-flow-content-flow",
+    ui_content_root_flow_content_flow_txt = "datapadreader-ui-content-root-flow-content-flow-txt",
 
     keyboard_shortcut = "datapadreader-keyboard-shortcut",
 

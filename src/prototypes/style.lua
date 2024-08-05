@@ -3,28 +3,6 @@ window_width = 240
 ---@diagnostic disable-next-line
 window_height = 520
 
-data.raw['gui-style']['default']['datapadreader-close-button'] = {
-    type = 'button_style',
-    horizontal_align = 'right'
-}
-
-data.raw["gui-style"]["default"]["datapadreader-ui-left-minimize-button"] = {
-    type = "button_style",
-    parent = "shortcut_bar_expand_button",
-    top_margin = 4
-}
-
-data.raw["gui-style"]["default"]["datapadreader-ui-draggable-space"] = {
-    type = "empty_widget_style",
-    parent = "draggable_space",
-    width = 8,
-    top_margin = 0,
-    bottom_margin = 4,
-    left_margin = 0,
-    right_margin = 0,
-    vertically_stretchable = "stretch_and_expand"
-}
-
 data.raw["gui-style"]["default"]["datapadreader-ui-sprite-button-frame"] = {
     type = "frame_style",
     margin = 4,
@@ -52,4 +30,12 @@ data.raw["gui-style"]["default"]["datapadreader-ui-draghandle"] = {
     height = 16,
     left_margin = 4,
     right_margin = 4
+}
+
+data.raw["gui-style"]["default"]["datapadreader-ui-content-root"] = {
+    type = "frame_style",
+    parent = "inside_shallow_frame",
+    width = window_width,
+    horizontally_stretchable = "on",
+    vertically_stretchable = "on"
 }

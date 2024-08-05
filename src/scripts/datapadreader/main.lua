@@ -1,6 +1,7 @@
 require("constants")
 require("ui")
 require("events")
+require("datapaddata")
 
 ---Returns the Datapad HUD for a given player, if it is open.
 ---@param player LuaPlayer
@@ -35,4 +36,16 @@ function Datapadreader.GuiToggle(player)
     else
         Datapadreader.GuiOpen(player)
     end
+end
+
+---@param player LuaPlayer
+---@return DatapadData
+function Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)
+    local player_index = player.index
+
+    if global.datapad_data == nil then
+        global.datapad_data = {}
+    end
+    global.datapad_data[player_index] = global.datapad_data[player_index] or {}
+    return global.datapad_data[player_index]
 end
