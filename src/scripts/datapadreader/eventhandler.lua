@@ -49,6 +49,10 @@ end
 function Datapadreader.OnCloseButtonClick(player)
     local slot = Datapadreader.GetSlot(player)
 
+    if player.cursor_stack.valid_for_read then
+        player.cursor_stack.clear()
+    end
+
     if HasSlotDatapadEmpty(slot) or HasSlotDatapadWithData(slot) then
         Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player).IsStackEventEnabled = false
         Datapadreader.OnSlotClick(player)
@@ -88,7 +92,6 @@ function Datapadreader.OnSlotClick(player)
         if HasSlotDatapadWithData(slot) then
             slot.sprite = nil
             local dpad = {name=Datapadreader.item_datapad_wdata, count=1}
-            --local player_index = player.index
             local dpadData = Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)
 
             if dpadData.Content ~= nil and dpadData.Content ~= {} then
@@ -143,7 +146,7 @@ end
 
 ---@param player LuaPlayer
 function Datapadreader.OnPlayerCursorStackChanged(player)
-    if IsCursorEmpty(player) then
+    if IsCursorEmpty(player) or not settings.get_player_settings(player.index)["datapad-auto-show-gui-on-user-pick-up"].value then
         return
     end
 

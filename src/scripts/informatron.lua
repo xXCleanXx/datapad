@@ -2,7 +2,7 @@ local Informatron = {} -- informatron pages implementation.
 
 function Informatron.menu(player_index)
   local menu = {
-    --jetpack = 1, -- already exists due to mod name
+
   }
   return menu
 end

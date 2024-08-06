@@ -6,7 +6,7 @@
     "dependencies": [
         "base >= 1.1.0"
     ],
-    "description": "A datapad item to share thoughts and ideas with your factory workers!",
+    "description": "The Datapad mod introduces a new layer of interactivity and utility to Factorio by adding two unique items: the Empty Datapad and the Datapad with Data. These items are designed to enhance in-game documentation and note-taking capabilities using the rich-text feature!",
     "factorio_version": "1.1",
     "package": {
         "ignore": ["**"],
@@ -14,6 +14,11 @@
             {
                 "root": ".build"
             }
-        ]
+        ],
+        "scripts": {
+          "datestamp": "sh ./build-scripts/datestamp.sh",
+          "prepackage": "sh ./build-scripts/prepackage.sh",
+          "postpublish": "sh ./build-scripts/postpublish.sh"
+        }
     }
 }

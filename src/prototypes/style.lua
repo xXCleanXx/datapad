@@ -35,7 +35,52 @@ data.raw["gui-style"]["default"]["datapadreader-ui-draghandle"] = {
 data.raw["gui-style"]["default"]["datapadreader-ui-content-root"] = {
     type = "frame_style",
     parent = "inside_shallow_frame",
-    width = window_width,
+    width = window_width - 16,
     horizontally_stretchable = "on",
-    vertically_stretchable = "on"
+    vertically_stretchable = "on",
+    left_margin = 4,
+    height = 520 - 80
+}
+
+data.raw["gui-style"]["default"]["datapadreader-ui-heading"] = {
+    type = "label_style",
+    font = "heading-font",
+    left_margin = 4
+}
+
+data.raw["gui-style"]["default"]["datapadreader-ui-close-button"] = {
+    type = "button_style",
+    parent = "close_button",
+    width = 16,
+    height = 16,
+    horizontal_align = "right"
+}
+
+data.raw["gui-style"]["default"]["datapadreader-ui-button-flow"] = {
+    type = "horizontal_flow_style",
+    top_margin = 6
+}
+
+data.raw["gui-style"]["default"]["datapadreader-ui-clear-button"] = {
+    type = "button_style",
+    parent = "red_button",
+    font = "button-font",
+    width = 60,
+    height = 28,
+    left_margin = 8
+}
+
+data.raw["gui-style"]["default"]["datapadreader-ui-write-button"] = {
+    type = "button_style",
+    parent = "confirm_button",
+    font = "button-font",
+    width = 64,
+    height = 28,
+    left_margin = 44
+}
+
+data.raw["gui-style"]["default"]["datapadreader-ui-content-textbox"] = {
+    type = "textbox_style",
+    height = 340,
+    width = window_width - 24
 }

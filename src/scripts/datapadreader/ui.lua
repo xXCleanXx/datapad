@@ -7,13 +7,12 @@ local function RenderTitlebar(element, root)
     }
     hFlow.drag_target = root
 
-    local heading = hFlow.add{
+    hFlow.add{
         type = "label",
         caption = {"datapad-reader.title"},
-        ignored_by_interaction = true
+        ignored_by_interaction = true,
+        style = "datapadreader-ui-heading"
     }
-    heading.style.font = "heading-font"
-    heading.style.left_margin = 4
 
     hFlow.add{
         type = "empty-widget",
@@ -21,18 +20,14 @@ local function RenderTitlebar(element, root)
         style = "datapadreader-ui-draghandle"
     }
 
-    local closeButton = hFlow.add{
+    hFlow.add{
         type = "sprite-button",
         sprite = "utility/close_white",
         hovered_sprite = "utility/close_black",
         clicked_sprite = "utility/close_black",
         tags = {action=Datapadreader.ui_action_close_button},
-        style = "close_button"
+        style = "datapadreader-ui-close-button"
     }
-
-    closeButton.style.width = 16
-    closeButton.style.height = 16
-    closeButton.style.horizontal_align = "right"
 end
 
 ---@param element LuaGuiElement
@@ -46,9 +41,8 @@ local function RenderSlot(element)
     local spritebutton = buttonFrame.add{
         type = "sprite-button",
         name = Datapadreader.ui_slot,
-        tags = {root=Datapadreader.name, action=Datapadreader.ui_slot}
+        tags = {root=Datapadreader.name, action=Datapadreader.ui_slot},
     }
-
     spritebutton.style.width = 36
     spritebutton.style.height = 36
 end
@@ -64,35 +58,27 @@ local function RenderButtons(element)
     local buttonFlow = flow.add{
         type = "flow",
         direction = "horizontal",
-        name = Datapadreader.ui_buttonflow
+        name = Datapadreader.ui_buttonflow,
+        style = "datapadreader-ui-button-flow"
     }
-    buttonFlow.style.top_margin = 6
 
-    local buttonClear = buttonFlow.add{
+    buttonFlow.add{
         type = "button",
         caption = {"datapad-reader.clear-button"},
         name = Datapadreader.ui_clear_button,
         enabled = false,
         tags = {action=Datapadreader.ui_action_clear_button},
-        style = "red_button"
+        style = "datapadreader-ui-clear-button"
     }
-    buttonClear.style.font = "button-font"
-    buttonClear.style.width = 60
-    buttonClear.style.height = 28
-    buttonClear.style.left_margin = 8
 
-    local buttonWrite = buttonFlow.add{
+    buttonFlow.add{
         type = "button",
         caption = {"datapad-reader.write-button"},
         enabled = false,
         name = Datapadreader.ui_write_button,
         tags = {action=Datapadreader.ui_action_write_button},
-        style = "confirm_button"
+        style = "datapadreader-ui-write-button"
     }
-    buttonWrite.style.font = "button-font"
-    buttonWrite.style.width = 64
-    buttonWrite.style.height = 28
-    buttonWrite.style.left_margin = 44
 end
 
 ---@param element LuaGuiElement
@@ -127,31 +113,27 @@ local function RenderContentTextbox(element)
     }
     root.style.margin = 4
 
-    local label = root.add{
+    root.add{
         type = "label",
         caption = {"datapad-reader.content"},
         style = "heading_3_label_yellow"
     }
 
-    local textbox = root.add{
+    root.add{
         type = "text-box",
         name = Datapadreader.ui_content_root_flow_content_flow_txt,
-        enabled = false
+        enabled = false,
+        style = "datapadreader-ui-content-textbox"
     }
-    textbox.style.height = 340
-    textbox.style.width = 240 - 24
 end
 
 ---@param element LuaGuiElement
 local function RenderContentFrame(element)
-        local root = element.add{
+    local root = element.add{
         type = "frame",
         name = Datapadreader.ui_content_root,
         style = "datapadreader-ui-content-root"
     }
-    root.style.left_margin = 4
-    root.style.width = 240 - 16
-    root.style.height = 520 - 80
 
     local rootFlow = root.add{
         type = "flow",
