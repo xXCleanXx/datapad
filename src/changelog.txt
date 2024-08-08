@@ -3,3 +3,7 @@ Version: 1.0.0
 Date: 2024-08-01
   Changes:
     - Initial release
+  Features:
+    - Two items, an empty datapad & a datapad with data
+    - A GUI called Datapad-Reader, for interacting for datapads
+    - All tested in multiplayer

@@ -46,7 +46,7 @@ function Datapadreader.on_keyboard_shortcut(event)
     local player = game.get_player(event.player_index) --[[@as LuaPlayer]]
 
     if event.input_name == Datapadreader.keyboard_shortcut then
-        Datapadreader.GuiToggle(player)
+        Datapadreader.OnKeyboardShortcutClose(player)
     end
 end
 script.on_event(Datapadreader.keyboard_shortcut, Datapadreader.on_keyboard_shortcut)
@@ -92,7 +92,7 @@ function Datapadreader.OnNewPlayer(event)
     end
 
     if player.get_main_inventory().get_contents()[Datapadreader.name] == nil then
-        player.insert({name=Datapadreader.item_datapad_wdata, count=1, tags = {content = "Lorem Ipsum my firend"}}) -- Give every new player an awesome datapad!
+        player.insert({name=Datapadreader.item_datapad_empty, count=1}) -- Give every new player an awesome datapad!
     end
 end
 script.on_event(defines.events.on_player_created, Datapadreader.OnNewPlayer)

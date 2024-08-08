@@ -5,7 +5,7 @@ data:extend({
         icon_size = 64,
         icon = "__datapad__/graphics/datapadicon_empty_64.png",
         subgroup = "tool",
-        stack_size= 1,
+        stack_size = 1,
         flags = {"not-stackable"},
         localised_description = {"item-description.datapad-empty"}
     },
@@ -15,7 +15,7 @@ data:extend({
         icon_size = 64,
         icon = "__datapad__/graphics/datapadicon_64.png",
         subgroup = "tool",
-        stack_size= 1,
+        stack_size = 1,
         flags = {"not-stackable"}
     },
     {

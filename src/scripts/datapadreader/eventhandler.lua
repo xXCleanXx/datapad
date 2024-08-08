@@ -25,7 +25,11 @@ end
 ---@param player LuaPlayer
 ---@return boolean
 local function HasCursorValidItem(player)
-    return player.cursor_stack.name == Datapadreader.item_datapad_empty or player.cursor_stack.name == Datapadreader.item_datapad_wdata
+    if not IsCursorEmpty(player) then
+        return player.cursor_stack.name == Datapadreader.item_datapad_empty or player.cursor_stack.name == Datapadreader.item_datapad_wdata
+    end
+
+    return false
 end
 
 ---@param player LuaPlayer
@@ -50,6 +54,12 @@ function Datapadreader.OnCloseButtonClick(player)
     local slot = Datapadreader.GetSlot(player)
 
     if player.cursor_stack.valid_for_read then
+        if not player.get_main_inventory().can_insert(player.cursor_stack) then
+            player.print({"datapad-reader.cannot-close-message"})
+            return
+        end
+
+        player.get_main_inventory().insert(player.cursor_stack)
         player.cursor_stack.clear()
     end
 
@@ -150,11 +160,18 @@ function Datapadreader.OnPlayerCursorStackChanged(player)
         return
     end
 
-    if HasCursorValidItem(player) and Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player).IsStackEventEnabled then
+    local dpaddata = Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)
+
+    if HasCursorValidItem(player) and dpaddata.IsStackEventEnabled then
         Datapadreader.GuiOpen(player)
     end
 
-    if not Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player).IsStackEventEnabled then
-        Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player).IsStackEventEnabled = true
+    if not dpaddata.IsStackEventEnabled then
+        dpaddata.IsStackEventEnabled = true
     end
+end
+
+---@param player LuaPlayer
+function Datapadreader.OnKeyboardShortcutClose(player)
+    Datapadreader.OnCloseButtonClick(player)
 end
