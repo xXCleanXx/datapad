@@ -65,17 +65,13 @@ script.on_init(Datapadreader.on_init)
 local function on_gui_text_changed(event)
     local player = game.get_player(event.player_index) --[[@as LuaPlayer]]
 
-    if not event.element.type == "text-box" then
+    if not Datapadreader.GetWindow(player) or event.element.name ~= Datapadreader.ui_content_root_flow_content_flow_txt then
         return
     end
 
     local txtBox = Datapadreader.GetContentTextbox(player)
 
-    if txtBox == nil then
-        return
-    end
-
-    if txtBox.text == nil then
+    if txtBox == nil or txtBox.text == nil then
         return
     end
 
