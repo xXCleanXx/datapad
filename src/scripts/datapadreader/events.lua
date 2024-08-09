@@ -46,14 +46,18 @@ function Datapadreader.on_keyboard_shortcut(event)
     local player = game.get_player(event.player_index) --[[@as LuaPlayer]]
 
     if event.input_name == Datapadreader.keyboard_shortcut then
-        Datapadreader.OnKeyboardShortcutClose(player)
+        if Datapadreader.GetWindow(player) then
+            Datapadreader.OnKeyboardShortcutClose(player)
+        else
+            Datapadreader.GuiOpen(player)
+        end
     end
 end
 script.on_event(Datapadreader.keyboard_shortcut, Datapadreader.on_keyboard_shortcut)
 
 ---Initializes DataPad
 function Datapadreader.on_init()
-    global.datapad_data = DatapadData
+    global.datapad_data = {}
 end
 script.on_init(Datapadreader.on_init)
 

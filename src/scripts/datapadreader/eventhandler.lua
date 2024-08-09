@@ -39,7 +39,7 @@ function Datapadreader.OnWriteButtonClick(player)
     local txtBox = Datapadreader.GetContentTextbox(player)
 
     if nameBox.text == nil or nameBox.text == "" then
-        nameBox.text = "Unnamed"
+        nameBox.text = "---"
     end
 
     local dpadData = Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)

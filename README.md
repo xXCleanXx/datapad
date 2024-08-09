@@ -22,7 +22,9 @@ Not just another notepad, but a text storage item that can be shared with others
 
 ### Screenshots
 
-N/A
+![Empty Datapad](screenshots/1.png)
+![Datapad-Reader](screenshots/2.png)
+![Datapad](screenshots/3.png)
 
 ### Enjoying this?
 Just star the repo or make a donation.

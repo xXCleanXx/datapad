@@ -48,9 +48,7 @@ function Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)
     end
 
     if global.datapad_data[player_index] == nil then
-        global.datapad_data[player_index] = {}
-        local d = global.datapad_data[player_index] --[[@as DatapadData]]
-        d.IsStackEventEnabled = true
+        global.datapad_data[player_index] = DatapadData.new()
     end
 
     return global.datapad_data[player_index]
