@@ -43,13 +43,13 @@ end
 function Datapadreader.GetGlobalDatapadModDataForSpecificPlayer(player)
     local player_index = player.index
 
-    if global.datapad_data == nil then
-        global.datapad_data = {}
+    if storage.datapad_data == nil then
+        storage.datapad_data = {}
     end
 
-    if global.datapad_data[player_index] == nil then
-        global.datapad_data[player_index] = DatapadData.new()
+    if storage.datapad_data[player_index] == nil then
+        storage.datapad_data[player_index] = DatapadData.new()
     end
 
-    return global.datapad_data[player_index]
+    return storage.datapad_data[player_index]
 end

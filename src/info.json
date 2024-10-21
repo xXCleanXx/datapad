@@ -1,13 +1,13 @@
 {
     "name": "datapad",
-    "version": "1.0.1",
+    "version": "2.0.1",
     "title": "DataPad",
     "author": "SpReeD, xXCleanXx",
     "dependencies": [
-        "base >= 1.1.0"
+        "base >= 2.0.0"
     ],
     "description": "The Datapad mod introduces a new layer of interactivity and utility to Factorio by adding two unique items: the Empty Datapad and the Datapad with Data. These items are designed to enhance in-game documentation and note-taking capabilities using the rich-text feature!",
-    "factorio_version": "1.1",
+    "factorio_version": "2.0",
     "package": {
         "ignore": ["**"],
         "extra": [

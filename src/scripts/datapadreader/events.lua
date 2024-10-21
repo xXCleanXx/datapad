@@ -57,7 +57,7 @@ script.on_event(Datapadreader.keyboard_shortcut, Datapadreader.on_keyboard_short
 
 ---Initializes DataPad
 function Datapadreader.on_init()
-    global.datapad_data = {}
+    storage.datapad_data = {}
 end
 script.on_init(Datapadreader.on_init)
 

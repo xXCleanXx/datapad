@@ -22,7 +22,7 @@ local function RenderTitlebar(element, root)
 
     hFlow.add{
         type = "sprite-button",
-        sprite = "utility/close_white",
+        sprite = "utility/close",
         hovered_sprite = "utility/close_black",
         clicked_sprite = "utility/close_black",
         tags = {action=Datapadreader.ui_action_close_button},
@@ -93,7 +93,7 @@ local function RenderNameTextbox(element)
     root.add{
         type = "label",
         caption = {"datapad-reader.name"},
-        style = "heading_3_label_yellow"
+        style = "frame_title"
     }
 
     local textbox = root.add{
@@ -116,7 +116,7 @@ local function RenderContentTextbox(element)
     root.add{
         type = "label",
         caption = {"datapad-reader.content"},
-        style = "heading_3_label_yellow"
+        style = "frame_title"
     }
 
     root.add{

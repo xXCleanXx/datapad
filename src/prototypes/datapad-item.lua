@@ -23,8 +23,13 @@ data:extend({
         name = "datapad-empty",
         energy_required = 2,
         enabled = false,
-        ingredients = {{"iron-plate", 2}, {"electronic-circuit", 10}, {"copper-cable", 2}, {"battery", 1}},
-        result = "datapad-empty"
+        ingredients = {
+            {type="item", name="iron-plate", amount=2},
+            {type="item", name="electronic-circuit", amount=10},
+            {type="item", name="copper-cable", amount=2},
+            {type="item", name="battery", amount=1}
+        },
+        results = {{type="item", name="datapad-empty", amount=1}}
     },
     {
         type = "technology",
@@ -38,7 +43,7 @@ data:extend({
                 recipe = "datapad-empty"
             }
         },
-        prerequisites = {"optics"},
+        prerequisites = {"lamp"},
         unit =
         {
             count = 10,

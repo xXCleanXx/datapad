@@ -13,7 +13,7 @@ data.raw["gui-style"]["default"]["datapadreader-ui-sprite-button-frame"] = {
 
 data.raw["gui-style"]["default"]["datapadreader-ui-frame"] = {
     type = "frame_style",
-    parent = "quick_bar_window_frame",
+    parent = "quick_bar_slot_window_frame",
     horizontal_flow_style = {
       type = "horizontal_flow_style",
       horizontal_spacing = 0
